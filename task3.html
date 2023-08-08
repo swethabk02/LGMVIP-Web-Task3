@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Student Registration Form</title>
+  <style>
+    /* Style the form container */
+    .form{
+      max-width: 500px;
+      margin: 0 auto;
+      border: 2px gray;
+      border-radius: 5px;
+      background-color: pink;
+    }
+
+    .forminput {
+      margin-bottom: 10px;
+      border-radius: 5px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: large;
+    }
+
+    /* Style the output container */
+    .output-container {
+      margin-top: 20px;
+      border: 2px solid gray;
+      border-radius: 7px;
+      padding: 10px;
+    }
+    body{
+        background-color: rgb(193, 120, 230);
+        text-align: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    h2{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        text-decoration: underline;
+        font-weight: bold;
+        font-style: italic;
+        padding-bottom: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form">
+    <h2>Registration Form</h2>
+    <div class="forminput">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+    </div>
+    <div class="forminput">
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+    </div>
+    <div class="forminput">
+      <label for="gender">Gender:</label><br>
+      <input type="radio" id="gender" value="Male" >
+      <label for="gender"> Male </label><br>
+      <input type="radio" id="gender" value="Female" >
+      <label for="gender">Female</label><br>
+      <input type="radio" id="gender" value="other" >
+      <label for="gender">other</label><br>
+    </div>
+    <div>
+        <label for="languages">Known Computer languages:</label><br>
+        <input type="checkbox" id="languages" value="html">
+        <label for="languages"> HTML </label><br>
+        <input type="checkbox" id="languages" value="javascript">
+        <label for="languages"> javascript</label><br>
+        <input type="checkbox" id="languages" value="CSS"> 
+        <label for="languages">CSS</label><br>
+        <input type="checkbox" id="languages" value="react js"> 
+        <label for="languages"> reactjs </label><br>
+    </div>
+    <button onclick="submitForm()">Submit</button>
+  </div>
+
+  <div class="output-container" id="output">   
+  </div>
+  <script>
+    function submitForm() {
+      // Get the form values
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const gender = document.getElementById('gender').value;
+      const languages = document.querySelectorAll('#languages:checked');
+      const known = Array.from(languages).map(checkbox => checkbox.value);
+
+      // Display the form values on the same page
+      const outputDiv = document.getElementById('output');
+      outputDiv.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Gender:</strong> ${gender}</p>
+        <p><strong>Known Computer Languages:</strong> ${known.join(', ')}</p>  
+      `;
+
+    }
+  </script>
+</body>
+</html>
